@@ -6,8 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { CategoriaService } from './../../categorias/categoria.service';
-import { PessoaService } from './../../pessoas/pessoa.service';
 import { Lancamento } from './../../core/model';
 import { LancamentoService } from './../lancamento.service';
 
@@ -30,8 +28,6 @@ export class LancamentoCadastroComponent implements OnInit {
   uploadEmAndamento = false;
 
   constructor(
-    private categoriaService: CategoriaService,
-    private pessoaService: PessoaService,
     private lancamentoService: LancamentoService,
     private messageService: MessageService,
     private errorHandler: ErrorHandlerService,
@@ -182,21 +178,9 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   carregarCategorias() {
-    return this.categoriaService.listarTodas()
-      .then(categorias => {
-        this.categorias = categorias
-          .map(c => ({ label: c.nome, value: c.id }));
-      })
-      .catch(erro => this.errorHandler.handle(erro));
   }
 
   carregarPessoas() {
-    this.pessoaService.listarTodas()
-      .then(pessoas => {
-        this.pessoas = pessoas
-          .map(p => ({ label: p.nome, value: p.id }));
-      })
-      .catch(erro => this.errorHandler.handle(erro));
   }
 
   novo() {

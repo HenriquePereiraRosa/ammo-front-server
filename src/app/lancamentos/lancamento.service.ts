@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { environment } from './../../environments/environment';
 import { Lancamento } from './../core/model';
-import { ApiHttp } from '../seguranca/api-http';
+import { ApiHttp } from 'app/security/api-http';
 
 export class LancamentoFiltro {
   descricao: string;

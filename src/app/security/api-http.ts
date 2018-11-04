@@ -3,17 +3,12 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 
 import { Observable, from as observableFromPromise } from 'rxjs';
 
-import { AuthService } from './auth.service';
-
 export class NotAuthenticatedError {}
 
 @Injectable()
 export class ApiHttp extends HttpClient {
 
-  constructor(
-    private auth: AuthService,
-    private httpHandler: HttpHandler
-  ) {
+  constructor(private httpHandler: HttpHandler) {
     super(httpHandler);
   }
 
@@ -46,22 +41,7 @@ export class ApiHttp extends HttpClient {
   }
 
   private fazerRequisicao<T>(fn: Function): Observable<T> {
-    if (this.auth.isAccessTokenInvalido()) {
-      console.log('Requisição HTTP com access token inválido. Obtendo novo token...');
-
-      const chamadaNovoAccessToken = this.auth.obterNovoAccessToken()
-        .then(() => {
-          if (this.auth.isAccessTokenInvalido()) {
-            throw new NotAuthenticatedError();
-          }
-
-          return fn().toPromise();
-        });
-
-      return observableFromPromise(chamadaNovoAccessToken);
-    } else {
       return fn();
-    }
   }
 
 }

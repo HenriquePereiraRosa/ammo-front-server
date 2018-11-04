@@ -4,23 +4,23 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 
-import { ErrorHandlerService } from './../../core/error-handler.service';
-import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
+import { ItemListFiltro, HomeService } from './home.service';
+import { ErrorHandlerService } from 'app/core/error-handler.service';
 
 @Component({
-  selector: 'app-lancamentos-pesquisa',
-  templateUrl: './lancamentos-pesquisa.component.html',
-  styleUrls: ['./lancamentos-pesquisa.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class LancamentosPesquisaComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   totalRegistros = 0;
-  filtro = new LancamentoFiltro();
-  lancamentos = [];
+  filtro = new ItemListFiltro();
+  bedSheets = [];
   @ViewChild('tabela') grid;
 
   constructor(
-    private lancamentoService: LancamentoService,
+    private homeService: HomeService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private confirmation: ConfirmationService,
@@ -28,17 +28,19 @@ export class LancamentosPesquisaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Pesquisa de lançamentos');
+    this.title.setTitle('Lencol Avulso');
   }
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
 
-    this.lancamentoService.pesquisar(this.filtro)
+    this.homeService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
-        this.lancamentos = resultado.lancamentos;
-        console.log(`LANÇAMENTOS: ${JSON.stringify(resultado)}`);
+        this.bedSheets = resultado.items; // .lancamentos;
+        // DEBUG
+        console.log(`Recursos: ${JSON.stringify(resultado)}`);
+        console.log(`Lencois: ${JSON.stringify(this.bedSheets)}`);
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -58,15 +60,14 @@ export class LancamentosPesquisaComponent implements OnInit {
   }
 
   excluir(lancamento: any) {
-    this.lancamentoService.excluir(lancamento.id)
+    this.homeService.excluir(lancamento.id)
       .then(() => {
         if (this.grid.first === 0) {
           this.pesquisar();
         } else {
           this.grid.first = 0;
         }
-
-        this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' });
+        this.messageService.add({ severity: 'success', detail: 'Recurso excluído com sucesso!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

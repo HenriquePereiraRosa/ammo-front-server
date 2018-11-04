@@ -14,12 +14,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
-import { LancamentosRoutingModule } from './lancamentos-routing.module';
-import { SharedModule } from './../shared/shared.module';
-import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
-import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+import { SharedModule } from '../shared/shared.module';
+import { HomeComponent } from './home.component';
+import { HomeRoutingModule } from './home-routing.module';
 import { ApiHttp } from 'app/security/api-http';
-import { LancamentoService } from './lancamento.service';
+import { HomeService } from './home.service';
 
 @NgModule({
   imports: [
@@ -40,16 +39,13 @@ import { LancamentoService } from './lancamento.service';
     ProgressSpinnerModule,
 
     SharedModule,
-    LancamentosRoutingModule
+    HomeRoutingModule
   ],
-  declarations: [
-    LancamentoCadastroComponent,
-    LancamentosPesquisaComponent
-  ],
+  declarations: [ HomeComponent ],
   providers: [
     ApiHttp,
-    LancamentoService
+    HomeService
   ],
   exports: []
 })
-export class LancamentosModule { }
+export class HomeModule { }

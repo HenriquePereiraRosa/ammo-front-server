@@ -1,10 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { LoginFormComponent } from './login-form/login-form.component';
+import { HomeComponent } from 'app/home/home.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginFormComponent }
+  { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({
