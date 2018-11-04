@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://ammo-test-server.herokuapp.com',
+  apiUrl: 'https://mm-back.herokuapp.com',
 };
