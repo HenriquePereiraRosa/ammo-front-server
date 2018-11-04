@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://ammo-test-server.herokuapp.com',
+  apiUrl: 'https://mm-test-api.herokuapp.com',
 };
