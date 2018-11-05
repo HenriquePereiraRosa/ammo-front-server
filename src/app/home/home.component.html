@@ -1,8 +1,8 @@
 <div class="container">
   <div class="ui-g">
 
-    <form autocomplete="off" (ngSubmit)="pesquisar()">
-      <div class="ui-g-2 ui-fluid">
+    <form class="ui-g-12" autocomplete="off" (ngSubmit)="pesquisar()">
+      <div class="ui-g-3">
         <svg class="logo" viewBox="0 0 264 32" width="100%" height="100%">
           <title>logo-mmartan</title>
           <path d="M0.188 12.8c0-1.882 0-4.329-0.188-6.212h6.965c0 1.318 0.188 2.635 0.188 3.953 2.824-3.388 5.835-4.894 9.788-4.894 4.518 0 8.282 1.882 10.165 5.647 2.635-4.329 6.588-5.647 10.541-5.647 4.518 0 11.294 1.882 11.294 11.482v14.871h-7.153v-13.365c0-6.212-2.635-7.718-6.212-7.718-3.765 0-7.341 2.824-7.341 9.035v12.047h-7.153v-13.365c0-6.212-2.635-7.718-6.212-7.718-3.765 0-7.341 2.824-7.341 9.035v12.047h-7.341v-19.2z"></path>
@@ -14,12 +14,12 @@
           <path d="M235.482 12.612c0-2.259 0-4.329-0.188-6.024h6.965c0.188 1.506 0.188 2.824 0.188 4.141v0c2.447-3.576 5.647-5.082 10.165-5.082 4.329 0 10.918 2.447 10.918 10.729v15.624h-7.153v-13.365c0-6.212-2.635-7.718-6.212-7.718-3.765 0-7.341 2.824-7.341 9.035v12.047h-7.153v-19.388z"></path>
         </svg>
       </div>
-      <div class="ui-g-5 ui-fluid">
+      <div class="ui-g-4">
       </div>
-      <div class="ui-g-4 ui-fluid">
+      <div class="ui-g-4">
         <input pInputText type="text" name="descricao" [(ngModel)]="params">
       </div>
-      <div class="ui-g-1 ui-fluid">
+      <div class="ui-g-1">
         <button pButton type="submit" icon="fa fa-search"></button>
       </div>
     </form>
@@ -61,10 +61,11 @@
           </tr>
         </ng-template>
 
-        <ng-template pTemplate="footer">
-
-          <p-paginator [styleClass]="width-full" [rows]="filtro.itensPorPagina" totalRecords="totalRegistros"
-            [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
+        <ng-template pTemplate="footer" class="ui-g-12">
+            <div class="ui-g-12">
+              <p-paginator class="width-full" [rows]="filtro.itensPorPagina" totalRecords="totalRegistros"
+                [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
+            </div>
         </ng-template>
 
         <ng-template pTemplate="emptymessage">
