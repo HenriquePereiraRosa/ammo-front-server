@@ -19,12 +19,9 @@ export class HomeService {
 
   resourceUrl: string;
 
-  params: string;
 
   constructor(private http: ApiHttp) {
     this.resourceUrl = `${environment.apiUrl}/resource`;
-    this.params = '';
-    this.search(this.params);
   }
 
   pesquisar(filtro: ItemListFiltro): Promise<any> {

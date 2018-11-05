@@ -3,8 +3,11 @@
     color: #8c2910;
 }
 
-
 .promo-price {
     color: gray;
     text-decoration-line: line-through;
+}
+
+.width-full {
+    width: 100%;
 }

@@ -13,12 +13,14 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import {PaginatorModule} from 'primeng/paginator';
 
 import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { ApiHttp } from 'app/security/api-http';
 import { HomeService } from './home.service';
 import { HomeComponent } from './home.component';
+import { from } from 'rxjs';
 
 @NgModule({
   imports: [
@@ -37,6 +39,7 @@ import { HomeComponent } from './home.component';
     CurrencyMaskModule,
     FileUploadModule,
     ProgressSpinnerModule,
+    PaginatorModule,
 
     SharedModule,
     HomeRoutingModule

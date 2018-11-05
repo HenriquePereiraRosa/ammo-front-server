@@ -1,7 +1,7 @@
 <div class="container">
   <div class="ui-g">
 
-    <form autocomplete="off" (ngSubmit)="pesquisar()" #form>
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
       <div class="ui-g-2 ui-fluid">
         <svg class="logo" viewBox="0 0 264 32" width="100%" height="100%">
           <title>logo-mmartan</title>
@@ -59,6 +59,12 @@
             <span class="col-valor"><strong>R${{ item.promoPrice }}</strong></span>
           </td>
           </tr>
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+
+          <p-paginator [styleClass]="width-full" [rows]="filtro.itensPorPagina" totalRecords="totalRegistros"
+            [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
         </ng-template>
 
         <ng-template pTemplate="emptymessage">
