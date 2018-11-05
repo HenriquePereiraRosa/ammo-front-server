@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle('Pesquisa de items');
+    this.pesquisar();
   }
 
   pesquisar(pagina = 0) {
