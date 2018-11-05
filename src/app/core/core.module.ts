@@ -11,7 +11,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { GrowlModule } from 'primeng/growl';
 
 import { ErrorHandlerService } from './error-handler.service';
-import { LancamentoService } from './../lancamentos/lancamento.service';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 
@@ -35,7 +34,6 @@ registerLocaleData(localePt);
     ConfirmDialogModule
   ],
   providers: [
-    LancamentoService,
     ErrorHandlerService,
 
     ConfirmationService,
