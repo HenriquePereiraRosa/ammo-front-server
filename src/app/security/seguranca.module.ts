@@ -6,7 +6,6 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { SegurancaRoutingModule } from './seguranca-routing.module';
-import { HomeComponent } from 'app/home/home.component';
 import { ApiHttp } from './api-http';
 
 
@@ -19,7 +18,7 @@ import { ApiHttp } from './api-http';
 
     SegurancaRoutingModule
   ],
-  declarations: [HomeComponent],
+  declarations: [],
   providers: [ApiHttp]
 })
 export class SegurancaModule { }

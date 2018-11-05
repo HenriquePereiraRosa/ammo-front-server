@@ -19,8 +19,12 @@ export class HomeService {
 
   resourceUrl: string;
 
+  params: string;
+
   constructor(private http: ApiHttp) {
     this.resourceUrl = `${environment.apiUrl}/resource`;
+    this.params = '';
+    this.search(this.params);
   }
 
   pesquisar(filtro: ItemListFiltro): Promise<any> {
@@ -76,9 +80,9 @@ export class HomeService {
   }
 
 
-  search(filtro: ItemListFiltro): Promise<any> {
-    let params = new HttpParams({fromObject: {} });
-    params = params.append('descricao', filtro.descricao);
+  search(params: string): Promise<any> {
+    let httpParams = new HttpParams({fromObject: {} });
+    httpParams = httpParams.append('', params);
 
     return this.http.get<any>(`${environment.apiUrl}/search`)
       .toPromise()

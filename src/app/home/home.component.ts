@@ -1,9 +1,6 @@
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
-import { MessageService } from 'primeng/components/common/messageservice';
-
 import { ItemListFiltro, HomeService } from './home.service';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
 
@@ -14,6 +11,7 @@ import { ErrorHandlerService } from 'app/core/error-handler.service';
 })
 export class HomeComponent implements OnInit {
 
+  params: string;
   totalRegistros = 0;
   filtro = new ItemListFiltro();
   bedSheets = [];

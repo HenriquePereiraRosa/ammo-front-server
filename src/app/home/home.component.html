@@ -1,7 +1,7 @@
 <div class="container">
   <div class="ui-g">
 
-    <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <form autocomplete="off" (ngSubmit)="pesquisar()" #form>
       <div class="ui-g-2 ui-fluid">
         <svg class="logo" viewBox="0 0 264 32" width="100%" height="100%">
           <title>logo-mmartan</title>
@@ -17,7 +17,7 @@
       <div class="ui-g-5 ui-fluid">
       </div>
       <div class="ui-g-4 ui-fluid">
-        <input pInputText type="text" name="descricao" [(ngModel)]="filtro.params">
+        <input pInputText type="text" name="descricao" [(ngModel)]="params">
       </div>
       <div class="ui-g-1 ui-fluid">
         <button pButton type="submit" icon="fa fa-search"></button>
@@ -26,15 +26,14 @@
   </div>
   <div class="ui-g">
     <div class="ui-g-12" style="background-color: lightgray">
-      <h2>Lençol avulso</h2>
+      <h2>{{ params }}</h2>
     </div>
   </div>
 
   <div class="ui-g">
     <div class="ui-g-12">
       <div class="ui-g-12">{{ totalRegistros }} Produtos encontrados</div>
-      <p-table [value]="bedSheets" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true"
-        (onLazyLoad)="aoMudarPagina($event)" #tabela>
+      <p-table [value]="bedSheets" #tabela>
         <ng-template pTemplate="header">
           <tr>
             <th>Images</th>

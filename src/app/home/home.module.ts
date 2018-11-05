@@ -18,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { ApiHttp } from 'app/security/api-http';
 import { HomeService } from './home.service';
+import { HomeComponent } from './home.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,7 @@ import { HomeService } from './home.service';
     SharedModule,
     HomeRoutingModule
   ],
-  declarations: [],
+  declarations: [HomeComponent],
   providers: [
     ApiHttp,
     HomeService
