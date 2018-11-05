@@ -34,7 +34,7 @@
     <div class="ui-g-12">
       <div class="ui-g-12">{{ totalRegistros }} Produtos encontrados</div>
       <p-table [value]="bedSheets" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true"
-        [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)" #tabela>
+        (onLazyLoad)="aoMudarPagina($event)" #tabela>
         <ng-template pTemplate="header">
           <tr>
             <th>Images</th>
