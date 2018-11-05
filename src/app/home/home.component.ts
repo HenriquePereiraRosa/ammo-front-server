@@ -22,13 +22,11 @@ export class HomeComponent implements OnInit {
   constructor(
     private homeService: HomeService,
     private errorHandler: ErrorHandlerService,
-    private messageService: MessageService,
-    private confirmation: ConfirmationService,
     private title: Title
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Lencol Avulso');
+    this.title.setTitle('Pesquisa de items');
   }
 
   pesquisar(pagina = 0) {
@@ -37,37 +35,7 @@ export class HomeComponent implements OnInit {
     this.homeService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
-        this.bedSheets = resultado.items; // .lancamentos;
-        // DEBUG
-        console.log(`Recursos: ${JSON.stringify(resultado)}`);
-        console.log(`Lencois: ${JSON.stringify(this.bedSheets)}`);
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }
-
-  aoMudarPagina(event: LazyLoadEvent) {
-    const pagina = event.first / event.rows;
-    this.pesquisar(pagina);
-  }
-
-  confirmarExclusao(lancamento: any) {
-    this.confirmation.confirm({
-      message: 'Tem certeza que deseja excluir?',
-      accept: () => {
-        this.excluir(lancamento);
-      }
-    });
-  }
-
-  excluir(lancamento: any) {
-    this.homeService.excluir(lancamento.id)
-      .then(() => {
-        if (this.grid.first === 0) {
-          this.pesquisar();
-        } else {
-          this.grid.first = 0;
-        }
-        this.messageService.add({ severity: 'success', detail: 'Recurso excluído com sucesso!' });
+        this.bedSheets = resultado.items;
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

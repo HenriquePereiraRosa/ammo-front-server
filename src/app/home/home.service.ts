@@ -9,8 +9,7 @@ import { ApiHttp } from 'app/security/api-http';
 
 export class ItemListFiltro {
   descricao: string;
-  dataVencimentoInicio: Date;
-  dataVencimentoFim: Date;
+  params: string
   pagina = 0;
   itensPorPagina = 5;
 }
@@ -35,20 +34,14 @@ export class HomeService {
       params = params.append('descricao', filtro.descricao);
     }
 
-    return this.http.get<any>(`${this.resourceUrl}`) // , { params })
+    return this.http.get<any>(`${this.resourceUrl}`)
       .toPromise()
       .then(response => {
-        // DEBUG
-        console.log(`Response from get: ${JSON.stringify(response)}`);
         const items = response;
-
         const resultado = {
           items,
           total: items.length
         };
-
-        // DEBUG
-        console.log(`Resultado from get: ${resultado}`);
         return resultado;
       });
   }
@@ -69,7 +62,6 @@ export class HomeService {
       .toPromise()
       .then(response => {
         const itemAlterado = response;
-        // this.converterStringsParaDatas([itemAlterado]);
         return itemAlterado;
       });
   }
@@ -79,21 +71,25 @@ export class HomeService {
       .toPromise()
       .then(response => {
         const item = response;
-        // this.stringToPrice([item]);
         return item;
       });
   }
 
-  // private stringToPrice(items: ItemList[]) {
-  //   for (const item of items) {
-  //     item.normalPrice = moment(item.normalPrice,
-  //       '').toDate();
 
-  //     if (item.dataPagamento) {
-  //       item.dataPagamento = moment(item.dataPagamento,
-  //         'YYYY-MM-DD').toDate();
-  //     }
-  //   }
-  // }
+  search(filtro: ItemListFiltro): Promise<any> {
+    let params = new HttpParams({fromObject: {} });
+    params = params.append('descricao', filtro.descricao);
+
+    return this.http.get<any>(`${environment.apiUrl}/search`)
+      .toPromise()
+      .then(response => {
+        const items = response;
+        const resultado = {
+          items,
+          total: items.length
+        };
+        return resultado;
+      });
+  }
 
 }

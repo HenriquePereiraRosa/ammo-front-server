@@ -15,7 +15,6 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { SharedModule } from '../shared/shared.module';
-import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { ApiHttp } from 'app/security/api-http';
 import { HomeService } from './home.service';
@@ -41,7 +40,7 @@ import { HomeService } from './home.service';
     SharedModule,
     HomeRoutingModule
   ],
-  declarations: [ HomeComponent ],
+  declarations: [],
   providers: [
     ApiHttp,
     HomeService
